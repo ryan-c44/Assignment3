@@ -1,0 +1,61 @@
+EmployeeId,EmployeeType,Position,FirstName,LastName,Gender,DOB
+8207906,ACADEMIC,Research Fellow,Oscar,Neri,M,13-12-1977
+9784644,CONTRACTOR,IT Professional,Charlotte,Elkies,F,05-11-1972
+4679018,ADMIN,School Administrator,Christopher,Roper,M,04-11-1976
+7926425,ACADEMIC,Lecturer,Aiden,Gundlach,M,30-06-1968
+3296700,ACADEMIC,Professor,Lea,Sinise,F,14-06-1983
+4757825,ACADEMIC,Associate Research Fellow,Theo,More,M,07-03-1960
+8920436,ACADEMIC,Senior Research Fellow,Aiden,Kronheimer,M,08-05-1962
+7968199,ADMIN,Finance Officer,Alice,Paoloni,F,25-09-1969
+8203424,ACADEMIC,Associate Research Fellow,Levi,Scheider,M,16-02-1973
+3468647,ACADEMIC,Senior Research Fellow,Eden,Perez,F,22-02-1966
+1658318,ACADEMIC,Senior Research Fellow,Emilia,Proietti,F,01-12-1963
+3591322,ACADEMIC,Professor,Nathaniel,Butler,M,12-03-1979
+6587526,CONTRACTOR,IT Professional,Lena,Cranmer,F,29-01-1977
+5393704,ACADEMIC,Associate Professor,Victoria,Davis,F,21-06-1981
+6699278,ACADEMIC,Lecturer,Lucien,Crothers,M,30-05-1973
+4477761,ACADEMIC,Associate Research Fellow,Olivia,Vasey,F,23-05-1971
+5088727,ACADEMIC,Research Fellow,Rayan,Winslet,M,03-06-1964
+5073447,ACADEMIC,Associate Lecturer,Jude,Bergman,M,21-05-1975
+9973177,ACADEMIC,Senior Research Fellow,Enzo,Reicher,M,30-07-1966
+4509515,ACADEMIC,Associate Professor,Achille,Carpenter,M,17-05-1968
+4687395,ACADEMIC,Lecturer,Austin,Price,M,14-07-1972
+1521356,ACADEMIC,Lecturer,Gabrielle,Gaitsgory,F,17-01-1962
+0769218,CONTRACTOR,Software Engineer,Lillian,Clark,F,18-09-1981
+4317946,CONTRACTOR,Software Engineer,Nathaniel,Rosa,M,12-07-1964
+3982274,ACADEMIC,Associate Research Fellow,Riley,Vauzou,F,18-08-1981
+0774611,ACADEMIC,Professor,Ayla,Burgess,F,24-09-1972
+5164990,ACADEMIC,Lecturer,Sophie,Thompson,F,06-11-1976
+2985779,ACADEMIC,Senior Lecturer,Lucy,Braley,F,03-12-1962
+0263191,ACADEMIC,Professor,Constance,Winsor,F,13-11-1970
+6955519,ADMIN,Finance Officer,Holly,Gimre,F,29-03-1975
+5261279,ACADEMIC,Senior Lecturer,Olivia,More,F,06-03-1981
+4872207,ACADEMIC,Associate Professor,Eva,Wright,F,27-08-1982
+0084627,ACADEMIC,Senior Research Fellow,Quinn,Salvi,F,17-08-1975
+5354119,ACADEMIC,Research Fellow,Jack,Guerra,M,27-06-1970
+0685096,ACADEMIC,Associate Professor,Ariana,Bennett,F,19-07-1965
+5039917,ACADEMIC,Senior Lecturer,Nolan,Gotti,M,09-01-1969
+3661406,ACADEMIC,Professor,Savannah,Chillemi,F,09-05-1976
+9340791,ACADEMIC,Associate Research Fellow,Ryder,Bates,M,11-04-1965
+7184916,ACADEMIC,Lecturer,Isabella,Duvall,F,30-06-1975
+5929680,ACADEMIC,Associate Lecturer,Gabin,Schmid,M,13-01-1982
+5040070,ACADEMIC,Associate Professor,Luna,Hyde,F,26-04-1968
+5646798,ACADEMIC,Associate Lecturer,Edgar,More,M,07-05-1960
+2927008,ACADEMIC,Associate Research Fellow,Aaliyah,Knill,F,24-04-1973
+6378686,ACADEMIC,Associate Professor,Daisy,Gargan,F,04-07-1981
+0984795,ADMIN,School Administrator,Jessica,Auroux,F,12-02-1960
+9551589,ACADEMIC,Associate Lecturer,Ilyes,Vauzou,M,13-01-1969
+1630212,ACADEMIC,Associate Lecturer,Ruby,Vashuk,F,29-09-1965
+8573242,ACADEMIC,Research Fellow,Matilda,Wolsey,F,16-01-1960
+8696843,ACADEMIC,Senior Research Fellow,Isaac,Collins,M,05-10-1965
+7160789,ACADEMIC,Research Fellow,Ulysse,Debeau,M,25-01-1978
+6640974,ACADEMIC,Associate Lecturer,Ayoub,Williamson,M,02-10-1967
+3959284,ACADEMIC,Research Fellow,Antonin,Kaufmann,M,27-12-1971
+6732228,ACADEMIC,Associate Professor,Hannah,Minder,F,20-08-1975
+9183361,ACADEMIC,Lecturer,Willow,Williams,F,21-09-1966
+6546205,ACADEMIC,Associate Professor,Willow,Machin,F,24-03-1960
+0695989,ACADEMIC,Research Fellow,Amir,Alcott,M,31-07-1977
+2186352,ADMIN,School Administrator,Mason,Woodin,M,30-10-1963
+9185164,ACADEMIC,Research Fellow,Aiden,Horner,M,18-07-1963
+1428290,ACADEMIC,Associate Research Fellow,Willow,Williamson,F,14-10-1963
+1859281,ACADEMIC,Lecturer,Leo,Lopez,M,26-04-1980
