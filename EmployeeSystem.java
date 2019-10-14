@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -7,13 +8,41 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
+import java.util.*;
 public class EmployeeSystem {
 	
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	
-	public boolean addEmployee(Employee e) {
-		return employees.add(e);
+	public void addEmployee(Employee e) {
+		employees.add(e);
+	}
+	
+	public void updateEmployee(String id, String firstName, String lastName, LocalDate dob, Gender gender, String position, EmployeeType employeeType) {
+		Employee oldEmployee = findEmployeeById(id);
+		
+		if(firstName != null && !firstName.equals(oldEmployee.getFirstName())) {
+			oldEmployee.setFirstName(firstName);
+		}
+		
+		if(lastName != null && !lastName.equals(oldEmployee.getLastName())) {
+			oldEmployee.setLastName(lastName);
+		}
+		
+		if(gender != null && !gender.equals(oldEmployee.getGender())) {
+			oldEmployee.setGender(gender);
+		}
+		
+		if(position != null && !position.equals(oldEmployee.getPosition())) {
+			oldEmployee.setPosition(position);
+		}
+		
+		if(dob != null && !dob.equals(oldEmployee.getDob())) {
+			oldEmployee.setDob(dob);
+		}
+		
+		if(employeeType != null && !employeeType.equals(oldEmployee.getEmployeeType())) {
+			oldEmployee.setEmployeeType(employeeType);
+ 		}
 	}
 
 	public Employee findEmployeeById(String id) {
@@ -123,6 +152,40 @@ public class EmployeeSystem {
 		for(Employee employee : employees) {
 			System.out.println(employee.toString());
 		}
+		
+		System.out.println("Total Employees: " + employees.size());
+	}
+	
+	public String getHeader() {
+		StringFormatter sf = (new StringFormatter())
+				                .add(0, StringFormatter.Alignment.L, 25)
+				                .add(1, StringFormatter.Alignment.L, 25)
+				                .add(2, StringFormatter.Alignment.L, 25)
+				                .add(3, StringFormatter.Alignment.L, 25)
+				                .add(4, StringFormatter.Alignment.L, 25)
+				                .add(5, StringFormatter.Alignment.L, 25)
+				                .add(6, StringFormatter.Alignment.L, 25);
+		
+		String header = sf.format("ID", "First Name", "Last Name", "Gender", "DOB", "Position", "Employee Type");
+		return header;
+	}
+	
+	public String getInfo() {
+		StringFormatter sf = (new StringFormatter())
+                .add(0, StringFormatter.Alignment.L, 25)
+                .add(1, StringFormatter.Alignment.L, 25)
+                .add(2, StringFormatter.Alignment.L, 25)
+                .add(3, StringFormatter.Alignment.L, 25)
+                .add(4, StringFormatter.Alignment.L, 25)
+                .add(5, StringFormatter.Alignment.L, 25)
+                .add(6, StringFormatter.Alignment.L, 25);
+		
+		String info = "";
+		
+		for(Employee employee : employees) {
+			info += sf.format(employee.getEmployeeID(), employee.getFirstName(), employee.getLastName(), employee.getGender().name(), employee.getDob().toString(), employee.getPosition(), employee.getEmployeeType().name());
+		}
+		return info;
 	}
 	
 }

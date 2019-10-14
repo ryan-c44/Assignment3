@@ -16,7 +16,15 @@ public class Main {
 		ejf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ejf.pack();
 		ejf.setVisible(true);
-
+		
+		 
+		EmployeeListJFrame listFrame = new EmployeeListJFrame();
+		listFrame.setEmployeeSystem(employeeSystem);
+		listFrame.setTitle("Employee List");
+		listFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		listFrame.pack();
+		listFrame.setVisible(true);
+		
 	}
 
 }

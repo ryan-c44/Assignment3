@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import javax.swing.*;
 
@@ -15,7 +16,8 @@ public class EmployeeJFrame extends JFrame {
 	private JTextField employeeIdTF;
 	private JTextField positionTF;
 	private JButton searchButton;
-	private JButton addUpdateButton;
+	private JButton addButton;
+	private JButton updateButton;
 	private JTextField firstNameTF;
 	private JTextField lastNameTF;
 	private JTextField dobTF;
@@ -132,8 +134,10 @@ public class EmployeeJFrame extends JFrame {
 		FlowLayout layout = new FlowLayout();
 		employeeBottomPanel.setLayout(layout);
 		 
-		addUpdateButton = new JButton("Add/Update Student");
-		employeeBottomPanel.add(addUpdateButton);
+		addButton = new JButton("Add Employee");
+		updateButton = new JButton("Update Employee");
+		employeeBottomPanel.add(addButton);
+		employeeBottomPanel.add(updateButton);
 	}
 	
 	private void initEmployeeTypeGUI() {
@@ -142,14 +146,15 @@ public class EmployeeJFrame extends JFrame {
 
 		employeeTypeCB = new JComboBox<EmployeeType>(employeeTypeOptions);
 
-		employeeCenterPanel.add(new JLabel("Student Type"));
+		employeeCenterPanel.add(new JLabel("Employee Type"));
 		employeeCenterPanel.add(employeeTypeCB);
 	}
 
 	
 	private void initEventHandler() {
 		initSearchButtonHandler();
-		initAddUpdateButtonHandler();
+		initAddButtonHandler();
+		initUpdateButtonHandler();
 	}
 	
 	private void showMessage(String title, String message) {
@@ -160,7 +165,7 @@ public class EmployeeJFrame extends JFrame {
 		DateTimeFormatter dobFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
 		firstNameTF.setText(employee.getFirstName());
-		lastNameTF.setText(employee.getLastName());
+		lastNameTF.setText(employee.getLastName()); 
 		dobTF.setText(employee.getDob().format(dobFormat));
 		
 		if(employee.getGender().equals(Gender.M)) {
@@ -182,6 +187,7 @@ public class EmployeeJFrame extends JFrame {
 		}
 		
 	}
+
 	
 	private void initSearchButtonHandler() {
 		searchButton.addActionListener(
@@ -202,37 +208,140 @@ public class EmployeeJFrame extends JFrame {
 			);
 	}
 	
-	private void initAddUpdateButtonHandler() {
-		addUpdateButton.addActionListener(
+	public boolean isDateValid(LocalDate date) {
+		try {
+			DateTimeFormatter dobFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			date = LocalDate.parse(dobTF.getText(), dobFormat);;
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	private void initUpdateButtonHandler() {
+		updateButton.addActionListener(
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						try {
+						DateTimeFormatter dobFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+						 String employeeID = employeeIdTF.getText();
+						 String firstName = firstNameTF.getText();
+						 String lastName = lastNameTF.getText();
+						 LocalDate dob = LocalDate.parse(dobTF.getText(), dobFormat);
+						 String position = positionTF.getText();
+						 Gender gender = null;
+					 
+						 if(maleRB.isSelected()) {
+							 gender = Gender.M; 
+						 }
+					 
+						 if(femaleRB.isSelected()) {
+							 gender = Gender.F;
+						 }
+					 
+						 EmployeeType employeeType = (EmployeeType) employeeTypeCB.getSelectedItem();
+						 
+						 if(employeeID.isEmpty()) {
+							 throw new IllegalArgumentException("Employee Id is required");
+						 }
+						 
+						 if(employeeID.length() < 7 || employeeID.length() > 7) {
+							 throw new IllegalArgumentException("Employee Id must be 7 digits");
+						 }
+						 
+						 if(firstName.isEmpty()) {
+							 throw new IllegalArgumentException("Employee First Name is required");
+						 }
+						 
+						 if(lastName.isEmpty()) {
+							 throw new IllegalArgumentException("Employee Last Name is required");
+						 }
+						 
+						 if(!maleRB.isSelected() && !femaleRB.isSelected()) {
+							 throw new Exception("Gender must be checked");
+						 }
+						 
+						 if(position.isEmpty()) {
+							 throw new IllegalArgumentException("Position is required");
+						 }
+						 
+						 if(dob == null) {
+							 throw new IllegalArgumentException("DOB is required");
+						 }
+						 
+						 employeeSystem.updateEmployee(employeeID, firstName, lastName, dob, gender, position, employeeType);
+						 
+						}catch(Exception exception) {
+							JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				});
+	}
+	
+	private void initAddButtonHandler() {
+		addButton.addActionListener(
 			   new ActionListener() {
 				 @Override
 				 public void actionPerformed(ActionEvent e) {
-					 DateTimeFormatter dobFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-					 String employeeID = employeeIdTF.getText();
-					 String firstName = firstNameTF.getText();
-					 String lastName = lastNameTF.getText();
-					 LocalDate dob = LocalDate.parse(dobTF.getText(), dobFormat);
-					 String position = positionTF.getText();
-					 Gender gender = null;
+					 try {
+						 DateTimeFormatter dobFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+						 String employeeID = employeeIdTF.getText();
+						 String firstName = firstNameTF.getText();
+						 String lastName = lastNameTF.getText();
+						 LocalDate dob = LocalDate.parse(dobTF.getText(), dobFormat);
+						 String position = positionTF.getText();
+						 Gender gender = null;
 					 
-					 if(maleRB.isSelected()) {
-						gender = Gender.M; 
+						 if(maleRB.isSelected()) {
+							 gender = Gender.M; 
+						 }
+					 
+						 if(femaleRB.isSelected()) {
+							 gender = Gender.F;
+						 }
+					 
+						 EmployeeType employeeType = (EmployeeType) employeeTypeCB.getSelectedItem();
+						 
+						 if(employeeID.isEmpty()) {
+							 throw new IllegalArgumentException("Employee Id is required");
+						 }
+						 
+						 if(employeeID.length() < 7 || employeeID.length() > 7) {
+							 throw new IllegalArgumentException("Employee Id must be 7 digits");
+						 }
+						 
+						 if(firstName.isEmpty()) {
+							 throw new IllegalArgumentException("Employee First Name is required");
+						 }
+						 
+						 if(lastName.isEmpty()) {
+							 throw new IllegalArgumentException("Employee Last Name is required");
+						 }
+						 
+						 if(!maleRB.isSelected() && !femaleRB.isSelected()) {
+							 throw new Exception("Gender must be checked");
+						 }
+						 
+						 if(position.isEmpty()) {
+							 throw new IllegalArgumentException("Position is required");
+						 }
+						 
+						 if(dob == null) {
+							 throw new IllegalArgumentException("DOB is required");
+						 }
+						 
+						 Employee employee = new Employee(employeeID, employeeType, firstName, lastName, dob, gender, position);
+						 employeeSystem.addEmployee(employee);
+						 employeeSystem.writeCsv("C://Users//New//Desktop//A3.txt");
+						 
+					 }catch(Exception exception) {
+						 JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 					 }
-					 
-					 if(femaleRB.isSelected()) {
-						gender = Gender.F;
-					 }
-					 
-				 EmployeeType employeeType = (EmployeeType) employeeTypeCB.getSelectedItem();
-				 
-				 Employee employee = new Employee(employeeID, employeeType, firstName, lastName, dob, gender, position);
-				 employeeSystem.addEmployee(employee);
-				 employeeSystem.writeCsv("C://Users//New//Desktop//A3.txt");
-				
 				 }
 			}
 		);
-	} 
+	}
 }	
 
 
