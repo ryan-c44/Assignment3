@@ -158,34 +158,92 @@ public class EmployeeSystem {
 	
 	public String getHeader() {
 		StringFormatter sf = (new StringFormatter())
-				                .add(0, StringFormatter.Alignment.L, 25)
-				                .add(1, StringFormatter.Alignment.L, 25)
-				                .add(2, StringFormatter.Alignment.L, 25)
-				                .add(3, StringFormatter.Alignment.L, 25)
-				                .add(4, StringFormatter.Alignment.L, 25)
-				                .add(5, StringFormatter.Alignment.L, 25)
-				                .add(6, StringFormatter.Alignment.L, 25);
+				.add(0, StringFormatter.Alignment.L, 20)
+                .add(1, StringFormatter.Alignment.L, 20)
+                .add(2, StringFormatter.Alignment.L, 20)
+                .add(3, StringFormatter.Alignment.L, 20)
+                .add(4, StringFormatter.Alignment.L, 20)
+                .add(5, StringFormatter.Alignment.L, 30)
+                .add(6, StringFormatter.Alignment.L, 20);
 		
-		String header = sf.format("ID", "First Name", "Last Name", "Gender", "DOB", "Position", "Employee Type");
+		String header = sf.format("ID", "First Name", "Last Name", "Gender", "DOB", "Position", "Employee Type") + "\n";
 		return header;
 	}
 	
 	public String getInfo() {
 		StringFormatter sf = (new StringFormatter())
-                .add(0, StringFormatter.Alignment.L, 25)
-                .add(1, StringFormatter.Alignment.L, 25)
-                .add(2, StringFormatter.Alignment.L, 25)
-                .add(3, StringFormatter.Alignment.L, 25)
-                .add(4, StringFormatter.Alignment.L, 25)
-                .add(5, StringFormatter.Alignment.L, 25)
-                .add(6, StringFormatter.Alignment.L, 25);
+                .add(0, StringFormatter.Alignment.L, 20)
+                .add(1, StringFormatter.Alignment.L, 20)
+                .add(2, StringFormatter.Alignment.L, 20)
+                .add(3, StringFormatter.Alignment.L, 20)
+                .add(4, StringFormatter.Alignment.L, 20)
+                .add(5, StringFormatter.Alignment.L, 30)
+                .add(6, StringFormatter.Alignment.L, 20);
 		
 		String info = "";
 		
 		for(Employee employee : employees) {
-			info += sf.format(employee.getEmployeeID(), employee.getFirstName(), employee.getLastName(), employee.getGender().name(), employee.getDob().toString(), employee.getPosition(), employee.getEmployeeType().name());
+			info += sf.format(employee.getEmployeeID(), employee.getFirstName(), employee.getLastName(), employee.getGender().name(), employee.getDob().toString(), employee.getPosition(), employee.getEmployeeType().name()) +"\n";
 		}
+		
 		return info;
 	}
+	
+	public void sortEmployeesDOB() {
+		Collections.sort(employees, new SortByDOB());
+	}
+	
+	public void sortEmployeesFirstName() {
+		Collections.sort(employees, new SortByFirstName());
+	}
+	
+	public void sortEmployeesLastName() { 
+		Collections.sort(employees, new SortByLastName());
+	}
+	
+	public void sortEmployeesGender() {
+		Collections.sort(employees, new SortByGender());
+	}
+	
+	public void sortEmployeesID() {
+		Collections.sort(employees, new SortByID());
+	}
+	
+	public void sortEmployeesPosition() {
+		Collections.sort(employees, new SortByPosition());
+	}
+	
+	public void sortEmployeesEmployeeType() {
+		Collections.sort(employees, new SortByEmployeeType());
+	}
+	
+	public void sortEmployeesDOBDescend() {
+		Collections.sort(employees, new SortByDOB().reversed());
+	}
+	
+	public void sortEmployeesFirstNameDescend() {
+		Collections.sort(employees, new SortByFirstName().reversed());
+	}
+	
+	public void sortEmployeesLastNameDescend() { 
+		Collections.sort(employees, new SortByLastName().reversed());
+	}
+	
+	public void sortEmployeesGenderDescend() {
+		Collections.sort(employees, new SortByGender().reversed());
+	}
+	
+	public void sortEmployeesIDDescend() {
+		Collections.sort(employees, new SortByID().reversed());
+	}
+	
+	public void sortEmployeesPositionDescend() {
+		Collections.sort(employees, new SortByPosition().reversed());
+	}
+	
+	public void sortEmployeesEmployeeTypeDescend() {
+		Collections.sort(employees, new SortByEmployeeType().reversed());
+	}
+	
 	
 }

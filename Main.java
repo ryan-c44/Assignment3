@@ -3,10 +3,9 @@ import javax.swing.JFrame;
 public class Main {
 	
 	public static void main(String[] args) {
-		UserManagement um = new UserManagement();
 		EmployeeSystem employeeSystem = new EmployeeSystem();
 		
-		employeeSystem.readCsv("C://Users//New//Desktop//A3.txt");
+		employeeSystem.readCsv("/Users/ryancastles/Desktop/A3.txt");
 		employeeSystem.displayEmployees();
 	
 		EmployeeJFrame ejf = new EmployeeJFrame();
@@ -18,8 +17,7 @@ public class Main {
 		ejf.setVisible(true);
 		
 		 
-		EmployeeListJFrame listFrame = new EmployeeListJFrame();
-		listFrame.setEmployeeSystem(employeeSystem);
+		EmployeeListJFrame listFrame = new EmployeeListJFrame(employeeSystem);
 		listFrame.setTitle("Employee List");
 		listFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		listFrame.pack();

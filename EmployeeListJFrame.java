@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EmployeeListJFrame extends JFrame {
 	
@@ -15,13 +17,10 @@ public class EmployeeListJFrame extends JFrame {
 	private JTextArea employeeTextArea;
 	private JScrollPane scroll;
 	
-	public EmployeeListJFrame() {
+	public EmployeeListJFrame(EmployeeSystem es) {
+		employeeSystem = es;
 		initComponentGUI();
 		initEventHandler();
-	}
-	
-	public void setEmployeeSystem(EmployeeSystem employeeSystem) {
-		this.employeeSystem = employeeSystem;
 	}
 	
 	private void initComponentGUI() {
@@ -30,7 +29,7 @@ public class EmployeeListJFrame extends JFrame {
 	}
 	
 	private void initEventHandler() {
-		
+		initDisplayButtonHandler();
 	}
 	
 	private void initEmployeePanel() {
@@ -78,6 +77,8 @@ public class EmployeeListJFrame extends JFrame {
 		orderPanel.add(ascendingRB);
 		orderPanel.add(descendingRB);
 		
+		ascendingRB.setSelected(true);
+		
 		employeeTopPanel.add(orderPanel);
 	}
 	
@@ -89,23 +90,130 @@ public class EmployeeListJFrame extends JFrame {
 	
 	private void initEmployeeCenterPanel() {
 		employeeCenterPanel = new JPanel();
-		EmployeeSystem es = new EmployeeSystem();
-		Font font = new Font("Sans Serif", Font.PLAIN, 12);
+		Font font = new Font("Courier", Font.PLAIN, 12);
 		
-		employeeTextArea = new JTextArea();
+		employeeTextArea = new JTextArea(20, 70);
 		employeeTextArea.setEditable(false);
 		employeeTextArea.setFont(font);
-		employeeTextArea.append(es.getHeader());
-		employeeTextArea.append(es.getInfo());
+		employeeTextArea.append(employeeSystem.getHeader());
+		employeeTextArea.append(employeeSystem.getInfo());
 		employeeCenterPanel.add(employeeTextArea);
 		
 		scroll = new JScrollPane(employeeTextArea);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
-		
 		employeeCenterPanel.add(scroll);
 	}
 	
+	private void initDisplayButtonHandler() {
+		displayButton.addActionListener(
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
 
-}
+						String sortByString = (String) sortByCB.getSelectedItem();
+						
+						if(ascendingRB.isSelected() && sortByString.equals("First Name")) {
+							employeeSystem.sortEmployeesFirstName();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(ascendingRB.isSelected() && sortByString.equals("Last Name")) {
+							employeeSystem.sortEmployeesLastName();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(ascendingRB.isSelected() && sortByString.equals("DOB")) {
+							employeeSystem.sortEmployeesDOB();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(ascendingRB.isSelected() && sortByString.equals("ID")) {
+							employeeSystem.sortEmployeesID();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(ascendingRB.isSelected() && sortByString.equals("Position")) {
+							employeeSystem.sortEmployeesPosition();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(ascendingRB.isSelected() && sortByString.equals("Employee Type")) {
+							employeeSystem.sortEmployeesEmployeeType();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(ascendingRB.isSelected() && sortByString.equals("Gender")) {
+							employeeSystem.sortEmployeesGender();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("First Name")) {
+							employeeSystem.sortEmployeesFirstNameDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("Last Name")) {
+							employeeSystem.sortEmployeesLastNameDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("DOB")) {
+							employeeSystem.sortEmployeesDOBDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("ID")) {
+							employeeSystem.sortEmployeesIDDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("Position")) {
+							employeeSystem.sortEmployeesPositionDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("Employee Type")) {
+							employeeSystem.sortEmployeesEmployeeTypeDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+						
+						if(descendingRB.isSelected() && sortByString.equals("Gender")) {
+							employeeSystem.sortEmployeesGenderDescend();
+							employeeTextArea.setText("");
+							employeeTextArea.append(employeeSystem.getHeader());
+							employeeTextArea.append(employeeSystem.getInfo());
+						}
+		
+					}
+				}
+			);
+		}
+	}

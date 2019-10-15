@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
 import javax.swing.*;
 
 public class EmployeeJFrame extends JFrame {
@@ -119,10 +118,12 @@ public class EmployeeJFrame extends JFrame {
 		ButtonGroup genderBG = new ButtonGroup();
 		genderBG.add(maleRB);
 		genderBG.add(femaleRB);
-
+		
 		JPanel genderPanel = new JPanel();
 		genderPanel.add(maleRB);
 		genderPanel.add(femaleRB);
+		
+		maleRB.setSelected(true);
 
 		employeeCenterPanel.add(new JLabel("Gender"));
 		employeeCenterPanel.add(genderPanel);
@@ -257,10 +258,7 @@ public class EmployeeJFrame extends JFrame {
 						 if(lastName.isEmpty()) {
 							 throw new IllegalArgumentException("Employee Last Name is required");
 						 }
-						 
-						 if(!maleRB.isSelected() && !femaleRB.isSelected()) {
-							 throw new Exception("Gender must be checked");
-						 }
+						
 						 
 						 if(position.isEmpty()) {
 							 throw new IllegalArgumentException("Position is required");
@@ -318,10 +316,7 @@ public class EmployeeJFrame extends JFrame {
 						 if(lastName.isEmpty()) {
 							 throw new IllegalArgumentException("Employee Last Name is required");
 						 }
-						 
-						 if(!maleRB.isSelected() && !femaleRB.isSelected()) {
-							 throw new Exception("Gender must be checked");
-						 }
+						
 						 
 						 if(position.isEmpty()) {
 							 throw new IllegalArgumentException("Position is required");

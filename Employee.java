@@ -109,10 +109,6 @@ public class Employee {
 			throw new IllegalArgumentException("gender is required");
 		}
 		
-		if(!gender.equals(Gender.M) || !gender.equals(Gender.F)) {
-			throw new IllegalArgumentException("Gender must be either Male or Female");
-		}
-		
 		this.gender = gender;
 	}
 
